@@ -1,3 +1,5 @@
+import './less/form.less'
+
 export class FormLogin {
   constructor (user, password) {
     this.user = user

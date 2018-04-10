@@ -1,5 +1,5 @@
 import './less/main.less'
-import FormLogin from './form'
+import {FormLogin} from './form'
 
 const form = new FormLogin('Fellyph', 'test123')
 
