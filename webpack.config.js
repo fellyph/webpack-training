@@ -9,7 +9,15 @@ module.exports = {
   module: {
     rules: [{
       test: /\.less$/,
-      loader: 'less-loader'
+      use: [{
+        loader: 'style-loader' // creates style nodes from a JS string
+      },
+      {
+        loader: 'css-loader' // translates CSS into CommonJS
+      },
+      {
+        loader: 'less-loader' // compiles LESS to CSS
+      }]
     }]
   }
 }
