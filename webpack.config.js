@@ -1,4 +1,5 @@
 const path = require('path')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: './src/main.js',
@@ -9,15 +10,13 @@ module.exports = {
   module: {
     rules: [{
       test: /\.less$/,
-      use: [{
-        loader: 'style-loader' // creates style nodes from a JS string
-      },
-      {
-        loader: 'css-loader' // translates CSS into CommonJS
-      },
-      {
-        loader: 'less-loader' // compiles LESS to CSS
-      }]
+      use: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: ['css-loader', 'less-loader']
+      })
     }]
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin('style.css')
+  ]
 }
